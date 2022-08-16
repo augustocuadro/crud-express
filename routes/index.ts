@@ -1,5 +1,5 @@
-import {Application, Router} from 'express';
-import api from './api'
+import { Application, Router } from 'express';
+import api from './api';
 
 class Routes {
     static configure(app: Application) {
@@ -7,4 +7,4 @@ class Routes {
     }
 }
 
-module.exports = Routes;
+export default Routes;

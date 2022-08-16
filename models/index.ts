@@ -1,1 +1,2 @@
-export {default as Article} from "./article";
+export { Article, IArticle } from './article';
+export { Comment, IComment } from './comment';

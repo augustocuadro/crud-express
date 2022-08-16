@@ -1,15 +1,23 @@
-class Article {
+import { model, Schema } from 'mongoose';
+
+interface IArticle {
     id: string;
     title: string;
     body: string;
     author: string;
-
-    constructor(id: string, title: string, body: string, author: string) {
-        this.id = id;
-        this.title = title;
-        this.body = body;
-        this.author = author;
-    }
 }
 
-export default Article;
+const ArticleSchema: Schema = new Schema<IArticle>(
+    {
+        title: { type: String, required: true },
+        body: { type: String, required: true },
+        author: { type: String, required: true }
+    },
+    {
+        timestamps: true
+    }
+);
+
+const Article = model<IArticle>('Article', ArticleSchema);
+
+export { IArticle, Article };

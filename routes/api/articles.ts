@@ -1,5 +1,5 @@
-import {Router} from 'express';
-import {ArticleController} from '../../controllers';
+import { Router } from 'express';
+import { ArticleController } from '../../controllers';
 
 const articlesApi = (router: Router) => {
     router.get('/', ArticleController.fetch);

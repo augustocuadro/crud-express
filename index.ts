@@ -1,7 +1,8 @@
-const express = require('express');
-const logger = require('morgan');
-const bodyParser = require('body-parser');
-const Routes = require('./routes');
+import express from 'express';
+import Routes from './routes';
+import mongoose from 'mongoose';
+import logger from 'morgan';
+import bodyParser from 'body-parser';
 
 const PORT = process.env.PORT || 3000;
 const app = express();
@@ -11,6 +12,13 @@ app.use(bodyParser.json());
 
 Routes.configure(app);
 
-app.listen(PORT, () => {
-    console.log(`Express server listening on port ${PORT}`);
-});
+const start = async () => {
+    await mongoose.connect('mongodb://localhost', {
+        socketTimeoutMS: 5000
+    });
+    app.listen(PORT, () => {
+        console.log(`Express server listening on port ${PORT}`);
+    });
+};
+
+start().then(() => `Server started...`);
