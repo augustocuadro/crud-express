@@ -17,9 +17,7 @@ class ArticleController {
 
     static async find(req: Request, res: Response, next: NextFunction) {
         try {
-            const article: IArticle | null = await ArticleService.find(
-                req.params.id
-            );
+            const article = await ArticleService.find(req.params.id);
             if (!article) {
                 return next(
                     new NotFoundError('Provided article does not exists')
